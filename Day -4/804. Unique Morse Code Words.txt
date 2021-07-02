@@ -1,0 +1,28 @@
+Problem: https://leetcode.com/problems/unique-morse-code-words/
+Time Complexity: O(n*2)
+Auxillary Space: O(n)
+Code:
+ int uniqueMorseRepresentations(vector<string>& words) {
+        vector<string> morse={".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+        int c=0,size=0;
+        set<string> change;
+        for(int i=0;i<words.size();i++)
+        {
+            string s=words[i];
+            string st="";
+                for(int j=0;j<s.length();j++)
+                {
+                    int in=int(s[j])-97;
+                    st+=morse[in];
+                }
+                change.insert(st);
+                if(size!=change.size())
+                {
+                    size=change.size();
+                    c++;
+                }
+            st="";
+           }
+        
+        return c;
+    }

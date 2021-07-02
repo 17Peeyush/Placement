@@ -1,0 +1,15 @@
+Problem: https://leetcode.com/problems/sum-of-all-subset-xor-totals/
+Time Complexity: O(2^n)
+Auxillary Space: O(logn) Stack size which will be always the height of recursive tree
+Code:
+int subxor(int n,int i,int sum,vector<int>&nums)
+    {
+        if(i==n)
+            return sum;
+        return subxor(n,i+1,sum^nums[i],nums)+subxor(n,i+1,sum,nums);
+            
+    }
+    int subsetXORSum(vector<int>& nums) {
+        int n=nums.size();
+        return subxor(n,0,0,nums);
+    }

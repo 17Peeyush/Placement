@@ -1,0 +1,13 @@
+Problem: https://leetcode.com/problems/decode-xored-array/
+Time Complexity; O(n)
+Auxillary Space: O(1)
+Code:
+ vector<int> decode(vector<int>& encoded, int first) {
+        int n=encoded.size()+1;
+        encoded.insert(encoded.begin(),first);
+        for(int i=1;i<n;i++)
+        {
+            encoded[i]=encoded[i]^encoded[i-1];
+        }
+        return encoded;
+    }

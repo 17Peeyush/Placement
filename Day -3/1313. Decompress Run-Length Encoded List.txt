@@ -1,0 +1,21 @@
+Problem: https://leetcode.com/problems/decompress-run-length-encoded-list/
+Time Complexity: O(n*m), where n is the length of array and m is the frequency.
+Auxillary Space: O(n)
+
+Code:
+vector<int> decompressRLElist(vector<int>& nums) {
+        vector<int>ans;
+        int n=nums.size();
+        int freq,val;
+        for(int i=1;i<n;i=i+2)
+        {
+            freq=nums[i-1];
+            val=nums[i];
+            while(freq)
+            {
+                ans.push_back(val);
+                freq--;
+            }
+        }
+        return ans;
+    }

@@ -1,0 +1,15 @@
+Problem:https://leetcode.com/problems/sort-integers-by-the-number-of-1-bits/
+Approach:https://leetcode.com/problems/sort-integers-by-the-number-of-1-bits/discuss/1310861/Bit-Manipulation-%2B-sort-function
+Code:
+ bool static  compare(int a,int b)
+    {
+        int sba= __builtin_popcount(a);
+        int sbb= __builtin_popcount(b);
+        if(sba==sbb)
+            return a<b;
+        return sba<sbb;
+    }
+    vector<int> sortByBits(vector<int>& arr) {
+        sort(arr.begin(),arr.end(),compare);
+        return arr;
+    }

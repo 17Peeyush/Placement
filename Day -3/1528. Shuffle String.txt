@@ -1,0 +1,11 @@
+Problem: https://leetcode.com/problems/shuffle-string/
+Time Complexity: O(n)
+Auxillary Space: O(n)
+Code:
+string restoreString(string s, vector<int>& indices) {
+        string str=s;
+        int n=s.length();
+        for(int i=0;i<n;i++)
+            str[indices[i]]=s[i];
+        return str;
+    }

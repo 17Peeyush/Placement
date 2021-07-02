@@ -1,0 +1,15 @@
+Problem: https://leetcode.com/problems/height-checker/
+Time Complexity: O(nlogn)
+Auxillary Space: O(n)
+Code:
+int heightChecker(vector<int>& heights) {
+        vector<int>arr(heights.begin(),heights.end());
+        int n=heights.size(),c=0;
+        sort(arr.begin(),arr.end());
+        for(int i=0;i<n;i++)
+        {
+            if(heights[i]!=arr[i])
+                c++;
+        }
+        return c;
+    }

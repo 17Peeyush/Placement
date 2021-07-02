@@ -1,0 +1,24 @@
+Problem:
+Time Complexity: O(nlogn)
+Auxillary Space: O(1)
+Code:
+ int peakIndexInMountainArray(vector<int>& arr) {
+        int l=0,h=arr.size()-1,mid;
+        while(l<=h)
+        {
+            mid=l+(h-l)/2;
+            if(arr[mid-1]<arr[mid]&&arr[mid]>arr[mid+1])
+            {
+                break;
+            }
+            else if(arr[mid-1]>arr[mid])
+            {
+                h=mid;
+            }
+            else
+            {
+                l=mid;
+            }
+        }
+        return mid;
+    }

@@ -1,0 +1,22 @@
+Problem: https://leetcode.com/problems/count-the-number-of-consistent-strings/
+Time Complexity: O(k+n*m), where is the length of words, m is the length of element in words
+Auxillary Space: O(k+m), where k is the length of string allowed and m is the average length of element in words
+Code:
+int countConsistentStrings(string allowed, vector<string>& words) {
+        int i=0;
+        unordered_set<char> allow(allowed.begin(),allowed.begin()+allowed.length());
+        for(auto x: words)
+        {
+            unordered_set<char> w(x.begin(),x.begin()+x.length());
+            bool f=true;
+            for(auto c:x)
+                if(allow.find(c)==allow.end())
+                {
+                    f=false;
+                    break;
+                }
+            if(f)
+                i++;
+        }
+        return i;
+    }
