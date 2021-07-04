@@ -1,0 +1,64 @@
+Problem :https://leetcode.com/problems/shift-2d-grid/
+Approach 1:
+Time Complexity: O(k*m*n)
+Auxillary Space: O(1)
+Code:
+vector<vector<int>> shiftGrid(vector<vector<int>>& grid, int k) {
+        int m=grid.size();
+        int n=grid[0].size();
+        k=k%(m*n);
+        int t,t1;
+        while(k--)
+        {
+            t=grid[m-1][n-1];
+            for(int i=0;i<m;i++)
+            {
+                for(int j=0;j<n;j++)
+                {
+                    t1=grid[i][j];
+                    grid[i][j]=t;
+                    t=t1;
+                }
+            }
+        }
+        return grid;
+    }
+
+Approach 2
+Time Complexity: O(m*n)
+Auxillary Space: O(m*n)
+Code:
+void reverse(int l,int h,vector<int>&one)
+    {
+        while(l<h)
+        {
+            swap(one[l],one[h]);
+            l++;h--;
+        }
+    }
+    vector<vector<int>> shiftGrid(vector<vector<int>>& v, int k) {
+        int r=v.size();
+        int m=v[0].size();
+        k=k%(r*m);
+         vector<int> one;
+        for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<m;j++)
+        {
+            one.push_back(v[i][j]);
+        }
+    }
+        int n=one.size();
+        reverse(0,n-k-1,one);
+        reverse(n-k,n-1,one);
+        reverse(0,n-1,one);
+        int c=0;
+        for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<m;j++)
+        {
+            v[i][j]=one[c++];
+        }
+    }
+        return v;
+    }

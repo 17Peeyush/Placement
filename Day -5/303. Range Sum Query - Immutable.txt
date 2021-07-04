@@ -1,0 +1,24 @@
+Problem: https://leetcode.com/problems/range-sum-query-immutable/
+Time Complexity: O(n)
+Auxillary Space: O(n)
+Code:
+class NumArray {
+public:
+    
+    vector<int>ps;
+    NumArray(vector<int>& nums) {
+        int n=nums.size();
+        ps.resize(n);
+        ps[0]=nums[0];
+        for(int i=1;i<n;i++)
+        {
+            ps[i]=nums[i]+ps[i-1];
+        }
+    }
+    
+    int sumRange(int left, int right) {
+        if(left==0)
+            return ps[right];
+        return ps[right]-ps[left-1];
+    }
+};
