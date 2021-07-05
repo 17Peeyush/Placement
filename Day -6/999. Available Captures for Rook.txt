@@ -1,0 +1,60 @@
+Problem: https://leetcode.com/problems/available-captures-for-rook/
+Time Complexity: O(m*n)
+Auxillary Space: O(m*n)
+Code:
+int numRookCaptures(vector<vector<char>>& board) {
+        int r=board.size(),c=board[0].size(),ri,rj;
+        for(int i=0;i<r;i++)
+        {
+            for(int j=0;j<c;j++)
+            {
+                if(board[i][j]=='R')
+                {
+                    ri=i;rj=j;
+                    break;
+                }
+            }
+        }
+        int pawn=0;
+        //top
+        for(int i=ri;i>=0;i--)
+        {
+            if(board[i][rj]=='B')
+                break;
+            else if(board[i][rj]=='p')
+            {
+                pawn++;break;
+            }
+        }
+        //down
+         for(int i=ri;i<r;i++)
+        {
+            if(board[i][rj]=='B')
+                break;
+            else if(board[i][rj]=='p')
+            {
+                pawn++;break;
+            }
+        }
+        //left
+         for(int j=rj;j>=0;j--)
+        {
+            if(board[ri][j]=='B')
+                break;
+            else if(board[ri][j]=='p')
+            {
+                pawn++;break;
+            }
+        }
+        //right
+         for(int j=rj;j<c;j++)
+        {
+            if(board[ri][j]=='B')
+                break;
+            else if(board[ri][j]=='p')
+            {
+                pawn++;break;
+            }
+        }
+        return pawn;
+    }

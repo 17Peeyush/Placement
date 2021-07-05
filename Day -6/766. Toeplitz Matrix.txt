@@ -1,0 +1,58 @@
+Problem: https://leetcode.com/problems/toeplitz-matrix/
+Time Complexity: O(m*n)
+Auxillary Space: O(m*n)
+Code:
+bool isToeplitzMatrix(vector<vector<int>>& mat) {
+        int flag=0;
+        int r=mat.size(),c=mat[0].size();
+        for(int k=c-1;k>0;k--)
+        {
+            int i=0,j=k;
+            int e=mat[i][k];
+            while(j<c&&i<r)
+            {
+                if(mat[i][j]!=e)
+                {
+                    flag=1;
+                    break;
+                }
+                i++;j++;
+            }
+        }
+        if(flag)
+        return false;
+
+        for(int k=0;k<r;k++)
+        {
+            int i=k,j=0;
+            int e=mat[i][j];
+            while(i<r&&j<c)
+            {
+                if(mat[i][j]!=e)
+                {
+                    flag=1;
+                    break;
+                }
+                i++;j++;
+
+            }
+        }
+        if(flag)
+         return false;
+        return true;
+    }
+
+    Code 2:
+     bool isToeplitzMatrix(vector<vector<int>>& mat) {
+        int flag=0;
+        int r=mat.size(),c=mat[0].size();
+        for(int i=0;i<r-1;i++)
+        {
+            for(int j=0;j<c-1;j++)
+            {
+                if(mat[i][j]!=mat[i+1][j+1])
+                    return false;
+            }
+        }
+        return true;
+    }
