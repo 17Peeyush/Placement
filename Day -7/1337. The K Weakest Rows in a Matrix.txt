@@ -1,0 +1,40 @@
+Problem: https://leetcode.com/problems/the-k-weakest-rows-in-a-matrix/
+Time Complexity: O()
+Auxillary Space: O(m)
+Code:
+typedef pair<int, int> pi;
+ int last_occurenceof1(vector<int>&v,int l,int h)
+    {
+        int res=-1,mid;
+        while(l<=h)
+        {
+            mid=l+(h-l)/2;
+            if(v[mid]==1)
+            {
+                res=mid;
+                l=mid+1;
+            }
+           else
+           {
+               h=mid-1;
+           }
+        }
+        return res;
+    }
+    vector<int> kWeakestRows(vector<vector<int>>& mat, int k) {
+        int c=mat[0].size();
+        vector<pi>index;
+        for(int i=0;i<mat.size();i++)
+        {
+            int civilian=last_occurenceof1(mat[i],0,c-1);
+            index.push_back({civilian+1,i});
+        }
+        vector<int>out;
+        sort(index.begin(),index.end());
+        int i=0;
+        while(k--)
+        {
+            out.push_back(index[i++].second);
+        }
+        return out;
+    }

@@ -1,0 +1,25 @@
+Problem:
+Time Complexity: O(m*(n+m))
+Auxillary Space: O(1)
+Code:
+vector<int> luckyNumbers (vector<vector<int>>& matrix) {
+        int m=matrix.size(),n=matrix[0].size();
+        for(int i=0;i<m;i++) 
+        {
+            int c=min_element(matrix[i].begin(),matrix[i].end())-matrix[i].begin();
+            int el=matrix[i][c],f=1;
+            for(int j=0;j<m;j++)
+            {
+                if(el<matrix[j][c])
+                {
+                    f=0;
+                    j=m;
+                }
+            }
+            if(f)
+            {
+                return {el};
+            }
+        }
+        return {};
+    }
