@@ -1,0 +1,34 @@
+Problem :https://leetcode.com/problems/determine-whether-matrix-can-be-obtained-by-rotation/
+Time Complexity: O(m*n)
+Auxillary Space: O(1)
+Code:
+ void transpose(vector<vector<int>>&m,int n)
+    {
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<=i;j++)
+            {
+                swap(m[i][j],m[j][i]);
+            }
+        }
+    }
+    void rotate(vector<vector<int>>&m)
+    {
+        int n=m.size();
+        transpose(m,n);
+        for(int i=0;i<n;i++)
+        {
+            reverse(m[i].begin(),m[i].end());
+        }
+    }
+    bool findRotation(vector<vector<int>>& mat, vector<vector<int>>& target) {
+        int k=3;
+        if(mat==target) return true;
+        while(k--)
+        {
+            rotate(mat);
+            if(mat==target)
+                return true;
+        }
+        return false;
+    }
