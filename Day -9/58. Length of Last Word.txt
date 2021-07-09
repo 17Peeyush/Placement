@@ -1,0 +1,16 @@
+Problem:https://leetcode.com/problems/length-of-last-word/
+Time Complexity: O(n)
+Auxillary Space: O(1)
+Code:
+int lengthOfLastWord(string s) {
+        int i=s.length()-1,c=1;
+        while(i>=0&&s[i]==' ')
+        {i--;
+        c++;}
+        while(i>=0&&s[i]!=' ')
+        {
+            i--;
+        }
+        
+        return s.length()-c-i;
+    }
