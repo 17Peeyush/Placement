@@ -1,0 +1,27 @@
+Problem: https://leetcode.com/problems/longest-palindrome/
+Time Complexity: O(n)
+Auxillary Space: O(n)
+Code:
+ int valid(int n)
+    {
+        return 2*(n/2);
+    }
+    int longestPalindrome(string s) {
+        vector<int>cap(26,0);
+        vector<int>small(26,0);
+        int maxl=0,f=0;
+        for(int i=0;i<s.length();i++)
+        {
+            if(isupper(s[i]))
+                cap[s[i]-'A']++;
+            else
+              small[s[i]-'a']++;
+        }
+        for(int i=0;i<26;i++)
+        {
+            maxl+=valid(cap[i])+valid(small[i]);
+            if(cap[i]%2!=0||small[i]%2!=0)
+                f=1;
+        }
+        return f+maxl;
+    }

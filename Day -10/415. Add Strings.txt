@@ -1,0 +1,35 @@
+Problem: https://leetcode.com/problems/add-strings/
+Time Complexity: O(n) where n is the length of larger string
+Auxillary Space: O(1)
+Code:
+string addDec(string a,string b)
+    {
+        int ca,cb,carry=0;
+        string ans="";
+        int al=a.length(),bl=b.length();
+        for(int i=1;i<=b.length();i++)
+        {
+            if((al-i)>=0)
+            {
+                  
+                ca=a[a.length()-i]-48;
+            }
+            else
+            {
+                ca=0;
+            }
+            cb=b[bl-i]-48;
+            ans=to_string((ca+cb+carry)%10)+ans;
+            carry=(ca+cb+carry)/10;
+        }
+        if(carry==1)
+            ans="1"+ans;
+        return ans;
+    }
+    string addStrings(string a, string b) {
+         if(a.length()<=b.length())
+        {
+            return addDec(a,b);
+        }
+            return addDec(b,a);
+    }
