@@ -1,0 +1,34 @@
+Problem: https://leetcode.com/problems/keyboard-row/
+Time Complexity: O(n)
+Auxillary Space: O(n)
+Code:
+int to_lower(char ch)
+    {
+        if('A'<=ch&&ch<='Z')
+        {
+            return (int)ch+32;
+        }
+        return (int)ch;
+    }
+    vector<string> findWords(vector<string>& words) {
+        vector<int>alpha={2,3,3,2,1,2,2,2,1,2,2,2,3,3,1,1,1,1,2,1,1,3,1,3,1,3};
+        vector<string>s;
+        for(auto x:words)
+        {
+            int f=1;
+            int t= alpha[to_lower(x[0])-97];
+            for(int i=1;i<x.length();i++)
+            {
+                if(t!=alpha[to_lower(x[i])-97])
+                {
+                    f=0;
+                    break;
+                }
+            }
+            if(f)
+            {
+              s.push_back(x);  
+            }
+        }
+        return s;
+    }

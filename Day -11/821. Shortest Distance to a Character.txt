@@ -1,0 +1,35 @@
+Problem:https://leetcode.com/problems/shortest-distance-to-a-character/
+Time Complexity: O(n)
+Auxillary Space: O(m) where m i sthe number of frequency of character c
+Code:
+vector<int> shortestToChar(string s, char c) {
+        vector<int>c_occ;
+    vector<int>out;
+    for(int i=0;i<s.length();i++)
+    {
+        if(s[i]==c)
+        c_occ.push_back(i);
+    }
+    for(int i=0;i<s.length();i++)
+    {
+        if(s[i]==c)
+            out.push_back(0);
+        else
+        {
+            int dis=INT_MAX;
+            for(int j=0;j<c_occ.size();j++)
+            {
+                if(dis>abs(c_occ[j]-i))
+                {
+                    dis=abs(c_occ[j]-i);
+                }
+                else if(dis<abs(c_occ[j]-i))
+                {
+                    break;
+                }
+            }
+            out.push_back(dis);
+        }
+    }
+    return out;
+    }

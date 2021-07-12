@@ -1,0 +1,28 @@
+Problem: https://leetcode.com/problems/reverse-only-letters/
+Time Complexity: O(n)
+Auxillary Space: O(1)
+Code:
+ bool isalphabet(char c)
+    {
+        return ('a'<=c&&c<='z'||'A'<=c&&c<='Z');
+    }
+    string reverseOnlyLetters(string s) {
+       int l=0,h=s.length()-1;
+        while(l<h)
+        {
+            if(!isalphabet(s[l]))
+            {
+                l++;
+            }
+            if(!isalphabet(s[h]))
+            {
+                h--;
+            }
+            if(isalphabet(s[l])&&isalphabet(s[h]))
+            {
+                swap(s[l],s[h]);
+                l++;h--;
+            }
+        }
+        return s;
+    }

@@ -1,0 +1,37 @@
+Problem:https://leetcode.com/problems/most-common-word/
+Time Complexity: O(n), n is the length of paragraph string
+Auxillary Space: O(n)
+Code:
+string mostCommonWord(string p, vector<string>& banned) {
+        int n=p.length();
+        for(int i=0;i<n;i++)
+        {
+            if(isalpha(p[i]) || p[i]==' ')
+            {
+                continue;
+            }
+            else
+            {
+                p[i]=' ';
+            }
+        }
+        cout<<p;
+        unordered_set<string>st(banned.begin(),banned.end());
+        map<string,int>mp;
+        stringstream str(p);
+        string freq="";int freqn=0;
+        string word;
+        while(str>>word)
+        {
+           transform(word.begin(), word.end(), word.begin(), ::tolower);
+            cout<<word;
+            mp[word]++;
+            if(mp[word]>freqn && st.find(word)==st.end())
+            {
+                freq=word;
+                freqn=mp[word];
+            }
+        }
+        
+        return freq;
+    }
