@@ -1,0 +1,9 @@
+Problem: https://leetcode.com/problems/missing-number/
+Time Complexity: O(n)
+Auxillary Space: O(1) 
+Code:
+int missingNumber(vector<int>& nums) {
+          int n=nums.size();
+          int sum=n*(n+1)/2;
+          return sum-accumulate(nums.begin(),nums.end(),0);
+    }

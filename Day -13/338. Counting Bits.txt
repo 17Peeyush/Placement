@@ -1,0 +1,21 @@
+Problem: https://leetcode.com/problems/counting-bits/description/
+Time Complexity: O(n)
+Auxillary Space: O(n) 
+Code:
+vector<int> countBits(int n) {
+        vector<int>out(n+1,0);
+        if(n==0) return out;
+        for(int i=1;i<=n;i++)
+        {
+            if(i%2==0)
+            {
+                out[i]=out[i/2];
+            }
+            else
+            {
+                out[i]=out[i/2]+1;
+            }
+        }
+        return out;
+        
+    }

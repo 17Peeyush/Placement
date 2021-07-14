@@ -1,0 +1,23 @@
+Problem: https://leetcode.com/problems/binary-watch/
+Time Complexity: O(1)
+Auxillary Space: O(1) 
+Code:
+ vector<string> readBinaryWatch(int turnedOn) {
+        vector<string> total_time;
+        for(int i=0;i<12;i++)
+        {
+            bitset<4> hour(i);
+            for(int j=0;j<60;j++)
+            {
+                bitset<8>min(j);
+                if(hour.count()+min.count()==turnedOn)
+                {
+                    string c_time="";
+                    c_time+=to_string(i)+":";
+                    c_time+=((j<10)?"0":"")+to_string(j);
+                    total_time.push_back(c_time);
+                }
+            }
+        }
+        return total_time;
+    }
